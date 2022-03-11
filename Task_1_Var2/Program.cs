@@ -6,30 +6,33 @@
 Console.WriteLine("Введите пятизначное число: ");
 String inputnumber = Console.ReadLine();
 int size = inputnumber.Length;
+int number = int.Parse(inputnumber);
 
-int index(int number)
-{
-    int units = dec % 10;
-    int dec = number / 10;
-    return units;
-}
 int[] array = new int[size];
-int currentindex = size - 1;
-while (currentindex > 0)
+int currentindex = 0;
+while (currentindex < size)
 {
-    array[currentindex] = index(number);
-    currentindex = currentindex-1;
+    array[currentindex] = number%10;
+    number = number/10;
+    currentindex++;
 }
 
-array[currentindex] = 0;
-while (currentindex < size/2)
+currentindex = 0;
+if (array[currentindex] != array[size - currentindex - 1])
 {
-    if (array[currentindex] == array[size - currentindex - 1])
+    Console.WriteLine("Данное число " + inputnumber + " не является палиндромом ");
+}
+else
+{
+    currentindex = 0;
+    while (currentindex < size/2)
+    {
+        if (array[currentindex] == array[size - currentindex - 1])
+        {
+            currentindex++;
+        }
+    }
+    Console.WriteLine("Данное число " + inputnumber + " является палиндромом ");
 }
 
-//int index(int number)
-//{
-    //int units = dec % 10;
-    //int dec = number / 10;
-    //return units;
-//}
+
